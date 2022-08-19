@@ -1,16 +1,19 @@
 const moviesService = require("./movies.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
+//List all movies with option for query if movie is showing in theaters
 async function list(req, res, next) {
   let data;
-  if (req.query.is_showing) {
-    data = await moviesService.listIsShowing();
-  } else {
-    data = await moviesService.list();
-  }
+  const { is_showing } = req.query;
+  is_showing
+    ? (data = await moviesService.listShowing())
+    : (data = await moviesService.list());
   res.json({ data });
 }
 
+/* Read movieId middleware */
+
+//Read validation middleware. Check if exists
 const movieExists = async (req, res, next) => {
   const movie = await moviesService.read(req.params.movieId);
   if (movie) {
