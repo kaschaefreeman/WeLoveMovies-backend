@@ -3,7 +3,11 @@ const router = express.Router();
 const controller = require('./movies.controller')
 
 router
-     .route('/:movieId/theaters').get(controller.read)
+     .route('/:movieId/theaters')
+     .get(controller.read)
+router
+     .route("/:movieId/reviews")
+     .get(controller.read);
 router
      .route('/:movieId')
      .get(controller.read)
