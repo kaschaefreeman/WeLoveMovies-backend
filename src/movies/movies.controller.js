@@ -6,7 +6,7 @@ async function list(req, res, next) {
   let data;
   const { is_showing } = req.query;
   is_showing
-    ? (data = await moviesService.listShowing())
+    ? (data = await moviesService.listIsShowing())
     : (data = await moviesService.list());
   res.json({ data });
 }

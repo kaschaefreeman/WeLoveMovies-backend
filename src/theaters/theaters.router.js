@@ -1,8 +1,7 @@
-const express = require('express')
-const router = express.Router()
-const controller = require('./theaters.controller')
+const express = require("express");
+const router = express.Router();
+const controller = require("./theaters.controller");
 
-router
-     .route('/')
+router.route("/").get(controller.list);
 
-module.exports = router
+module.exports = router;
