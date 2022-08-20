@@ -3,11 +3,12 @@ const router = express.Router();
 const controller = require('./movies.controller')
 
 router
-     .route('/')
-     .get(controller.list)
-
+     .route('/:movieId/theaters').get(controller.read)
 router
      .route('/:movieId')
      .get(controller.read)
+router
+     .route('/')
+     .get(controller.list)
 
 module.exports = router

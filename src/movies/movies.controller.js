@@ -14,8 +14,12 @@ async function list(req, res, next) {
 /* Read movieId middleware */
 
 //Read validation middleware. Check if exists
-const movieExists = async (req, res, next) => {
-  const movie = await moviesService.read(req.params.movieId);
+async function movieExists (req, res, next) {
+  const {movieId} = req.params
+  let movie
+  req.originalUrl.includes("theaters")
+    ? (movie = await moviesService.readMovieWithTheaters(movieId))
+    : (movie = await moviesService.read(movieId));
   if (movie) {
     res.locals.movie = movie;
     return next();
@@ -23,10 +27,12 @@ const movieExists = async (req, res, next) => {
   next({ status: 404, message: "Movie cannot be found." });
 };
 
-const read = (req, res, next) => {
+async function read (req, res, next) {
   const { movie: data } = res.locals;
   res.json({ data });
 };
+
+
 
 module.exports = {
   list: asyncErrorBoundary(list),
