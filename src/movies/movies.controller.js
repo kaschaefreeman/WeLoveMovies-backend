@@ -52,7 +52,7 @@ async function read(req, res, next) {
 module.exports = {
   list: asyncErrorBoundary(list),
   read: [
-    asyncErrorBoundary(checkMovieRoute),
+    asyncErrorBoundary(checkMovieByRoute),
     asyncErrorBoundary(movieExists),
     read,
   ],
