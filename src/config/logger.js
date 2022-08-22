@@ -2,7 +2,7 @@ require("dotenv").config();
 const pinoHttp = require("pino-http");
 const { nanoid } = require("nanoid");
 
-const level = process.env.LOG_LEVEL;
+const level = process.env.LOG_LEVEL || 'info';
 
 const nodeEnv = process.env.NODE_ENV || "development";
 
