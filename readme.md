@@ -4,7 +4,7 @@ Server API interface for storing and delivering movies, theaters, reviews, and c
 
 ## Links
 
-* [App Demo](https://we-love-movies-frontend-kf.herokuapp.com/)
+* [App Demo](https://kf-we-love-movies.netlify.app)
 * [App Documentation](https://github.com/kaschaefreeman/starter-movie-front-end)
 
 ## Technology
